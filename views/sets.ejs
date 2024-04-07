@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lego Collection - Sets</title>
+    <link rel="stylesheet" href="/css/main.css" />
+</head>
+
+<body>
+    <%- include('partials/navbar', { page: '/lego/sets' }) %>
+
+    <div class="container mx-auto">
+        <div class="hero bg-base-200 rounded-lg p-6">
+            <div class="hero-content text-center">
+                <div class="max-w-md">
+                    <h1 class="text-5xl font-bold">Collection</h1>
+                    <p class="py-6">Explore our collection of Lego sets.</p>
+                </div>
+            </div>
+        </div>
+
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Image</th>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Theme</th>
+                    <th class="px-4 py-2">Year</th>
+                    <th class="px-4 py-2">Parts</th>
+                    <th class="px-4 py-2">Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% sets.forEach(set => { %>
+                <tr>
+                    <td class="border px-4 py-2">
+                        <img src="<%= set.img_url %>" alt="<%= set.name %>" class="w-16 h-16">
+                    </td>
+                    <td class="border px-4 py-2"><%= set.name %></td>
+                    <td class="border px-4 py-2">
+                        <a class="btn btn-xs" href="/lego/sets?theme=<%= set.theme %>"><%= set.theme %></a>
+                    </td>
+                    <td class="border px-4 py-2"><%= set.year %></td>
+                    <td class="border px-4 py-2"><%= set.num_parts %></td>
+                    <td class="border px-4 py-2">
+                        <a class="btn btn-xs" href="/lego/sets/<%= set.set_num %>">Details</a>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
